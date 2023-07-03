@@ -1,0 +1,10 @@
+.chatItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.chatItem > pre {
+    white-space: pre-wrap;
+}
