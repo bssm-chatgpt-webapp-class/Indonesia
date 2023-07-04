@@ -10,9 +10,7 @@ router.post('/signin', async (req, res) => {
         if(row.length === 0){
             return res.status(400).json("아이디나 비밀번호가 틀렸습니다.")
         }
-
-        const token = jwt.sign({email},"secret")
-
+        const token = jwt.sign({ id: row[0].id, email},process.env.JWT_SECRET)
         return res.json({token})
     }catch(err){
         //if error, console log and throw error
