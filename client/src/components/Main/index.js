@@ -1,26 +1,19 @@
 import './index.css'
-import {gptSay, imgSrc} from "../../fixture";
+import {imgSrc} from "../../fixture";
 import ChatItem from "../chatItem";
 
-const Main = ({question}) => {
+const Main = ({chatMessages}) => {
     return (
         <div className={"main"}>
-            <ChatItem
-                imgSrc={imgSrc}
-                text={question}
-            />
-            <ChatItem
-                imgSrc={"/image/Chatgpt.png"}
-                text={gptSay}
-            />
-            <ChatItem
-                imgSrc={imgSrc}
-                text={"코딩잘하는법"}
-            />
-            <ChatItem
-                imgSrc={"/image/Chatgpt.png"}
-                text={gptSay}
-            />
+            {
+                chatMessages.map((chatMessage, index) => {
+                    return <ChatItem
+                        key={index}
+                        imgSrc={chatMessage.isMine ? imgSrc : "/image/Chatgpt.png"}
+                        text={chatMessage.message}
+                    />
+                })
+            }
         </div>
 
     );
